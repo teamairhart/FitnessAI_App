@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SnapKit          // ← NEW: should autocomplete and compile
 
 struct ContentView: View {
     var body: some View {
@@ -16,9 +17,13 @@ struct ContentView: View {
             Text("Hello, world!")
         }
         .padding()
+        .onAppear {
+            // Tiny SnapKit test: create a dummy view & constrain its height
+            let view = UIView()
+            view.snp.makeConstraints { make in
+                make.height.equalTo(10)
+            }
+            print("SnapKit is working ✅")
+        }
     }
-}
-
-#Preview {
-    ContentView()
 }
